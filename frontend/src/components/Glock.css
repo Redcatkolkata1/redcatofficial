@@ -1,0 +1,203 @@
+.glock_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;  /* make both halves same height */
+  min-height: 100vh;
+  background: url("../assets/background/bg1.jpg"); /* 🔥 Background image */               
+  background-color: black;
+  background-size: contain;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 60px 40px;
+  box-sizing: border-box;
+  color: white;
+}
+
+/* LEFT CONTENT */
+.glock_content {
+  flex: 2;
+  max-width: 50%;           /* take left half */
+  text-align: left;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  /* center text vertically */
+}
+
+.glock_content h1 {
+  color: #fff;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.glock_content h2 {
+  color: #fff;
+  margin: 20px 0 15px !important;
+  font-weight: bold;
+}
+
+.glock_content p {
+  color: #f8f3f3;
+  letter-spacing: 0.5px;
+  line-height: 1.8;
+  margin: 0 0 40px 0;
+  font-size: 1.05rem;
+}
+
+.video-container {
+  width: 30%;        /* 🔥 reduced size */
+  cursor: pointer;
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+/* Make video responsive */
+.video-container video {
+  width: 100%;
+  display: block;
+  border-radius: 10px;
+}
+
+/* Play button overlay */
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+  color: white;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  padding: 15px 20px;
+}
+.video-container:hover .play-button {
+  background: rgba(8, 214, 222, 0.8);
+}
+
+/* Popup overlay */
+.video-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Popup content */
+.video-popup-content {
+  position: relative;
+  max-width: 80%;
+  max-height: 80%;
+}
+
+.video-popup-content video {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.8);
+}
+
+/* Close button inside popup */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 2rem;
+  color: white;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+  transition: color 0.3s ease;
+}
+
+.video-popup-content video {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+/* Common styling for both buttons */
+.close-btn,
+.download-btn {
+  position: absolute;
+  top: 15px;   /* same line */
+  font-size: 2rem;
+  color: white;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1000;
+  transition: color 0.3s ease;
+}
+
+/* Close button on right */
+.close-btn {
+  right: 20px;
+}
+
+/* Download button on left */
+.download-btn {
+  left: 20px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+.download-btn:hover {
+  color: #08d6de; /* highlight color */
+}
+
+
+
+/* RIGHT LOGO */
+.glock_logo {
+  flex: 1;
+  max-width: 50%;             /* take right half */
+  display: flex;
+  justify-content: center;     /* center horizontally */
+  align-items: center;         /* center vertically */
+}
+
+.glock_logo img {
+  max-width: 300px;
+  height: auto;
+}
+
+/* 📱 Mobile tweaks */
+@media (max-width: 768px) {
+  .glock_container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .glock_content {
+    max-width: 100%;
+    text-align: center;   /* center text on small screens */
+  }
+
+  .video-container {
+    max-width: 100%;   /* full width on mobile */
+    margin: 15px auto;
+  }
+
+  .video-container video {
+    max-height: 300px; /* smaller video for phones */
+  }
+  .glock_logo {
+    max-width: 100%;
+    margin-top: 20px;
+  }
+
+  .glock_logo img {
+    max-width: 200px;
+  }
+}

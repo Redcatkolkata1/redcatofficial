@@ -1,0 +1,96 @@
+.gallery_container {
+  min-height: 100vh;
+  width: 100%;
+  background: url("../assets/background/bg1.jpg"); /* 🔥 Background image */               
+  background-color: black;
+  background-size: contain;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 50px 5% 80px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* ✅ dark overlay for readability */
+.gallery_container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55); /* adjustable opacity */
+  z-index: 0;
+}
+
+/* ✅ Centered Title */
+.gallery_title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 50px;
+  color: white;
+  text-align: center;
+  width: 100%;
+  position: relative;
+  z-index: 1; /* stays above overlay */
+}
+
+/* ✅ Uniform Grid */
+.gallery_grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  max-width: 1200px;
+  width: 100%;
+  position: relative;
+  z-index: 1; /* stays above overlay */
+}
+
+/* ✅ Rectangular uniform cards */
+.gallery_item {
+  background: #111;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+  transition: transform 0.3s ease-in-out;
+  height: 220px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery_item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+}
+
+/* Hover effect */
+.gallery_item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.8);
+}
+
+/* ✅ Mobile adjustments */
+@media (max-width: 768px) {
+  .gallery_title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+  }
+
+  .gallery_grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+  }
+
+  .gallery_item {
+    height: 180px;
+  }
+}

@@ -1,0 +1,89 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: auto !important;
+  scroll-behavior: smooth;
+
+  /* ❌ remove solid color, ✅ add static wallpaper */
+  background: url("../assets/background/bg1.jpg") no-repeat center center fixed;
+  background-size: cover;
+
+  font-family: Arial, sans-serif;
+}
+
+/* ROOT APP WRAPPER */
+#root,
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  /* transparent so wallpaper is visible */
+  background: transparent;
+}
+
+/* NAVBAR */
+.custom-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.6); /* semi-transparent over wallpaper */
+  backdrop-filter: blur(4px);
+}
+
+.custom-navbar img {
+  height: 50px;
+  object-fit: contain;
+}
+
+.custom-navbar .nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.custom-navbar .nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  transition: color 0.3s ease;
+  cursor: pointer;
+}
+
+.custom-navbar .nav-links a:hover {
+  color: #ffd700;
+}
+
+/* MAIN CONTENT */
+main,
+.content {
+  flex: 1 0 auto;
+  padding-top: 70px; /* navbar offset */
+  width: 100%;
+  background: transparent;
+}
+
+/* SECTIONS */
+section {
+  width: 100%;
+  min-height: 100vh; /* full viewport if content < 100vh */
+  height: auto;       /* grow with content */
+  padding: 60px 20px;
+  display: block;
+  background: transparent; /* ✅ transparent to show wallpaper */
+}

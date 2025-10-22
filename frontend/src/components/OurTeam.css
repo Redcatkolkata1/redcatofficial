@@ -1,0 +1,130 @@
+/* Background only on standalone */
+.ourteam_container.standalone {
+  min-height: 100vh;
+  width: 100%;
+  background: url("../assets/background/bg1.jpg") no-repeat center center fixed;
+  background-size: cover;
+  background-attachment: fixed;
+  padding: 60px 5%;
+  color: white;
+  text-align: center;
+  position: relative;
+}
+
+
+.directors_section {
+  margin-bottom: 50px; /* 🔥 increase gap between directors and next heading */
+}
+
+.ourteam_section:first-of-type {
+  margin-bottom: 0; /* pushes the next section down */
+}
+
+/* Optional dark overlay for readability */
+.ourteam_container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* semi-transparent black overlay */
+  z-index: 0;
+}
+
+.ourteam_section {
+  position: relative;
+  z-index: 1; /* ensures text/cards appear above overlay */
+}
+
+/* Section Titles */
+.section_title {
+  font-size: 2.2rem;   /* Keep slightly smaller */
+  font-weight: bold;
+  margin: 10px 0 30px;
+  color: white;        /* White color */
+}
+
+.section_subtitle {
+  font-size: 2.6rem;   /* Bigger than main title */
+  font-weight: bold;
+  color: rgb(255, 255, 255);         /* Golden color */
+  margin-bottom: 15px;
+}
+
+.team_subheading {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 20px 0;
+  color: #ddd;
+}
+
+/* Team Grid */
+.team_grid {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+
+.team_card {
+  background: #070707;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.8);
+  transition: transform 0.3s ease-in-out;
+}
+
+.team_card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.team_info {
+  padding: 15px;
+  background: #971212fb;
+}
+
+.team_info h4 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+  color: rgba(250, 250, 250, 0.959);
+}
+
+.team_info p {
+  font-size: 0.95rem;
+  color: #ccc;
+}
+
+/* Hover effect */
+.team_card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 18px rgba(8, 31, 95, 0.8);
+  cursor: pointer;
+}
+
+/* ✅ Override ONLY when inside home */
+.home_section {
+  min-height: auto !important;
+  padding-top: 60px;   /* keep spacing consistent */
+  padding-bottom: 60px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .section_title {
+    font-size: 2rem;
+  }
+
+  .team_card {
+    width: 200px;
+  }
+
+  .team_card img {
+    height: 220px;
+  }
+}

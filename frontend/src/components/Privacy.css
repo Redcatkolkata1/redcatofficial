@@ -1,0 +1,93 @@
+.privacy_container {
+  min-height: 100vh;              
+  display: flex;
+  align-items: flex-start;   
+  justify-content: flex-start; /* force left */
+  flex-wrap: wrap; 
+  background: url("../assets/background/bg1.jpg"); /* 🔥 Background image */               
+  background-color: black;
+  background-size: contain;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 100px 40px 50px;  
+  color: white !important;   /* force white text */
+  box-sizing: border-box;
+  width: 100%;                    
+  max-width: 100%;                
+  overflow-x: hidden;             
+  margin: 0 auto;                 
+  text-align: left !important; /* force all text left */        
+}
+
+.left_container {
+  flex: 1 1 60%;
+  max-width: 700px;
+  min-width: 280px;
+  box-sizing: border-box;
+  text-align: left !important;
+}
+
+.left_container h2{
+  color: white;
+  margin-top: -80px;
+}
+
+.privacy_container h2 {
+  margin-bottom: 30px;
+  font-weight: bold;
+  color: #fff !important;  /* bright yellow heading */
+  text-align: left !important;
+  opacity: 1 !important;      /* ensure visible */
+}
+
+.privacy_container p {
+  line-height: 1.8;
+  text-align: left !important;
+  color: #ffffff !important;  /* white text */
+}
+
+/* Main headings (1, 2, 3, etc.) */
+.privacy_container h3 {
+  margin-top: 25px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* Main section headings like 1, 2, 3, 4... */
+.main_heading {
+  margin-top: 40px;   /* extra spacing before */
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+}
+
+/* Sub-headings (2.1, 2.2, 2.3) */
+.sub_heading {
+  margin-left: 30px;
+  margin-top: 15px;   /* small gap only */
+  font-size: 18px;
+  font-weight: 600;
+  color: #f1f1f1;
+}
+
+/* Sub-heading bullet lists */
+.sub_heading + ul {
+   margin-left: 50px;      /* bullets indented more */
+   margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+  .privacy_container {
+    flex-direction: column;
+    text-align: left;   /* keep left aligned */
+    padding: 80px 20px;
+  }
+
+  .left_container {
+    max-width: 100%;
+    text-align: left;
+  }
+}

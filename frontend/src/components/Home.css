@@ -1,0 +1,344 @@
+/* Reset and base styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  font-family: Arial, sans-serif;
+  background-color: #000;
+}
+
+/* Fix for navbar scroll target spacing */
+.scroll-section {
+  scroll-margin-top: 80px;
+}
+
+/* ================= HERO CAROUSEL ================= */
+.home_container {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  background: #000;
+  overflow: hidden;
+}
+
+.hero-carousel {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.hero-carousel .carousel-inner,
+.hero-carousel .carousel-item,
+.carousel-slide {
+  width: 100%;
+  height: 100vh;
+}
+
+.carousel-slide {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel-img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  display: block;
+}
+
+/* ✅ Remove ANY overlay or tint completely */
+.carousel-slide::before,
+.carousel-slide::after {
+  content: none !important;
+}
+
+/* ✅ Ensure carousel captions (if used) are visible */
+.hero-carousel .carousel-caption {
+  z-index: 2;
+  bottom: 20%;
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+/* ================= SECTION BASE ================= */
+.home_section {
+  width: 100vw;
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  padding: 60px 0;
+}
+
+.section-inner-content {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.home_section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.home_section p {
+  font-size: 1.2rem;
+  color: #ddd;
+}
+
+/* Contact Section overrides */
+#contact .section-inner-content {
+  text-align: left !important;
+  display: block !important;
+}
+
+#contact label {
+  display: block;
+  width: 100%;
+  margin-bottom: 4px;
+  font-weight: 500;
+  text-align: left;
+}
+
+/* ================= MISSION / VISION ================= */
+.mission-vision-wrapper {
+  width: 100%;
+  background-color: #000;
+  padding: 60px 0;
+}
+
+.chevron-row {
+  display: flex;
+  width: 100%;
+  min-height: 250px;
+  color: white;
+  padding-left: 40px;
+}
+
+.chevron-row.reverse {
+  flex-direction: row-reverse;
+  padding-right: 40px;
+}
+
+.chevron-heading {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: red;
+  position: relative;
+  color: white;
+}
+
+.right-arrow {
+  clip-path: polygon(0 0, 90% 0, 100% 50%, 90% 100%, 0 100%);
+}
+
+.left-arrow {
+  clip-path: polygon(10% 0, 100% 0, 100% 100%, 10% 100%, 0 50%);
+}
+
+/* Animate scale */
+.chevron-heading h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+  transition: transform 0.8s ease, font-size 0.8s ease;
+  transform: scale(1);
+}
+
+.chevron-heading.animate h2 {
+  transform: scale(1.15);
+  font-size: 2.7rem;
+}
+
+.chevron-text {
+  width: 50%;
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  font-size: 1.2rem;
+  color: #fff;
+  text-align: left;
+  line-height: 1.6;
+}
+
+/* ================= ANGLED IMAGE SECTIONS ================= */
+.angled-info-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  background-color: #000;
+  color: #fff;
+  width: 100%;
+  margin: 0;
+  padding: 60px 40px;
+}
+
+.angled-info-section.reverse {
+  flex-direction: row-reverse;
+}
+
+.angled-image-wrapper {
+  flex: 1;
+  min-width: 300px;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 450px;
+}
+
+.angled-image-wrapper.right-clip {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+}
+
+.angled-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.angled-text {
+  flex: 1;
+  min-width: 300px;
+  padding: 40px 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #000;
+}
+
+.angled-text h2 {
+  font-size: 2.3rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.angled-text h3 {
+  font-size: 1.3rem;
+  color: #ffff;
+  margin-bottom: 15px;
+}
+
+.angled-text p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #fffefe;
+  margin-bottom: 15px;
+}
+
+/* ================= SECTION PADDING ================= */
+.home_section .ourteam_container,
+.home_section .products_container {
+  padding: 60px 0;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  /* === Fix Carousel Height & Remove Gap === */
+  .hero-carousel,
+  .hero-carousel .carousel-inner,
+  .hero-carousel .carousel-item,
+  .carousel-slide {
+    min-height: 40vh !important;
+    height: 40vh !important;
+    max-height: 40vh !important;
+    overflow: hidden;
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .carousel-img {
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: fill !important;
+    display: block;
+  }
+
+  .home_container {
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 40vh !important;
+    overflow: hidden;
+  }
+
+  /* === 🔽 Reduce gap before "Our Mission" (Updated) === */
+  .mission-vision-wrapper {
+    margin-top: -35px !important; /* tighter pull-up */
+    padding-top: 0 !important;
+  }
+
+  /* === Responsive Layout Adjustments === */
+  .chevron-row,
+  .chevron-row.reverse {
+    flex-direction: column;
+    min-height: auto;
+    padding: 0 !important;
+    align-items: center;
+  }
+
+  .chevron-heading {
+    width: 90% !important;
+    height: auto !important;
+    clip-path: none;
+    background-color: red;
+    margin: 5px auto 0 auto; /* slightly tighter spacing */
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+  }
+
+  .chevron-text {
+    width: 100%;
+    clip-path: none;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .chevron-heading h2 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .angled-info-section,
+  .angled-info-section.reverse {
+    flex-direction: column;
+    padding: 30px 0;
+  }
+
+  .angled-image-wrapper,
+  .angled-image-wrapper.right-clip {
+    clip-path: none;
+    height: 250px;
+  }
+
+  .angled-text {
+    padding: 20px;
+    text-align: center;
+  }
+}

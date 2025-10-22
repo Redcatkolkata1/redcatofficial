@@ -1,0 +1,108 @@
+.mseries_container {
+  min-height: 100vh;
+  width: 100%;
+  background: url("../assets/background/bg1.jpg"); /* 🔥 Background image */               
+  background-color: black;
+  background-size: contain;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 60px 5%;
+  color: white;
+  text-align: center;
+  position: relative;
+}
+
+/* Fix: correct class name */
+.products_section {
+  margin-bottom: 50px; /* gap below products section */
+}
+
+.mseries_section:first-of-type {
+  margin-bottom: 0;
+}
+
+/* Optional dark overlay for readability */
+.mseries_container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* semi-transparent black overlay */
+  z-index: 0;
+}
+
+.mseries_section {
+  position: relative;
+  z-index: 1; /* ensures text/cards appear above overlay */
+}
+
+/* Section Titles */
+.section_subtitle {
+  font-size: 2.6rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 30px;
+}
+
+/* Grid */
+.mseries_grid {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+
+/* Card */
+.mseries_card {
+  background: #070707;
+  border-radius: 12px;
+  overflow: hidden;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.8);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  text-decoration: none; /* remove link underline */
+}
+
+.mseries_card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+}
+
+.series_info {
+  padding: 15px;
+  background: #aa110bd1; /* deep red overlay */
+}
+
+.series_info h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0;
+  color: #f8f8f4;
+}
+
+/* Hover effect */
+.mseries_card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 18px rgba(6, 20, 223, 0.6);
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .section_subtitle {
+    font-size: 2rem;
+  }
+
+  .mseries_card {
+    width: 200px;
+  }
+
+  .mseries_card img {
+    height: 220px;
+  }
+}
