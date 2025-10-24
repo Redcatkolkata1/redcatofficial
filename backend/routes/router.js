@@ -6,7 +6,194 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 
-// Ensure uploads folder exists
+// Ensure uploads folder existsconst express = require("express");
+const router = new express.Router();
+const users = require("../models/userSchema");
+const nodemailer = require("nodemailer");
+const multer = require("multer");
+const path = require("path");
+const fs = require("fs");
+const { GridFsStorage } = require("multer-gridfs-storage");
+
+// ================== ENVIRONMENT SETUP ==================
+const isProduction = process.env.NODE_ENV === "production";
+
+// ================== UPLOAD CONFIG ==================
+let upload;
+
+if (isProduction) {
+  // 🔹 Use MongoDB GridFS in Production (GitHub/Cloud)
+  const mongoURI = process.env.MONGO_URI;
+
+  const storage = new GridFsStorage({
+    url: mongoURI,
+    options: { useUnifiedTopology: true },
+    file: (req, file) => ({
+      filename: Date.now() + "-" + file.originalname.replace(/\s+/g, "_"),
+      bucketName: "uploads", // Collection name in MongoDB
+    }),
+  });
+
+  const fileFilter = (req, file, cb) => {
+    const allowedTypes = [
+      "image/jpeg",
+      "image/png",
+      "image/jpg",
+      "video/mp4",
+      "application/pdf",
+      "application/msword",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "application/vnd.ms-excel",
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "application/vnd.ms-powerpoint",
+      "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+    ];
+    allowedTypes.includes(file.mimetype)
+      ? cb(null, true)
+      : cb(new Error("Invalid file type"), false);
+  };
+
+  upload = multer({ storage, fileFilter });
+  console.log("✅ Using GridFS for file storage (Production)");
+
+} else {
+  // 🔹 Use Local Upload Folder in Development
+  const uploadDir = path.join(__dirname, "../uploads");
+  if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir);
+  }
+
+  const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, uploadDir);
+    },
+    filename: function (req, file, cb) {
+      cb(null, Date.now() + "-" + file.originalname.replace(/\s+/g, "_"));
+    },
+  });
+
+  const fileFilter = (req, file, cb) => {
+    const allowedTypes = [
+      "image/jpeg",
+      "image/png",
+      "image/jpg",
+      "video/mp4",
+      "application/pdf",
+      "application/msword",
+      "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+      "application/vnd.ms-excel",
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "application/vnd.ms-powerpoint",
+      "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+    ];
+    allowedTypes.includes(file.mimetype)
+      ? cb(null, true)
+      : cb(new Error("Invalid file type"), false);
+  };
+
+  upload = multer({ storage, fileFilter });
+  console.log("✅ Using local uploads folder (Development)");
+}
+
+// ================== EMAIL CONFIG ==================
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.EMAIL,
+    pass: process.env.PASS,
+  },
+});
+
+// ================== REGISTER ROUTE ==================
+router.post("/register", upload.array("files", 20), async (req, res) => {
+  try {
+    const { fname, lname, email, phone, message } = req.body;
+
+    if (!fname || !lname || !email || !phone || !message) {
+      return res.status(401).json({ status: 401, error: "All Input required" });
+    }
+
+    // Uploaded files (GridFS or local)
+    const uploadedFiles = req.files.map((file) => ({
+      filename: file.filename,
+      path: file.path || file.id, // In GridFS, `file.id` is used
+      mimetype: file.mimetype,
+    }));
+
+    // Save to MongoDB
+    let user = await users.findOne({ email });
+    if (user) {
+      user.messages.push({ message, attachments: uploadedFiles });
+      await user.save();
+    } else {
+      user = new users({
+        fname,
+        lname,
+        email,
+        phone,
+        messages: [{ message, attachments: uploadedFiles }],
+      });
+      await user.save();
+    }
+
+    // ========== 1️⃣ Confirmation Email to User ==========
+    const userMail = {
+      from: process.env.EMAIL,
+      to: email,
+      subject: "Thank You for Contacting Redcat Hospitality Pvt. Ltd.",
+      text: `
+Hello ${fname} ${lname},
+
+Thank you for reaching out to Redcat Hospitality Pvt. Ltd.
+We’ve received your message and our team will get back to you shortly.
+
+Best regards,
+Redcat Hospitality Pvt. Ltd.
+care.redcathospitality@gmail.com
+      `,
+    };
+
+    // ========== 2️⃣ Send Form Data to Company Email ==========
+    const adminMail = {
+      from: process.env.EMAIL,
+      to: process.env.EMAIL,
+      subject: `New Contact Form Submission from ${fname} ${lname}`,
+      text: `
+A new message has been submitted from the contact form:
+
+--------------------------------------------
+🧾 Name: ${fname} ${lname}
+📧 Email: ${email}
+📱 Phone: ${phone}
+💬 Message: ${message}
+--------------------------------------------
+Submitted on: ${new Date().toLocaleString()}
+      `,
+      attachments: uploadedFiles.map((file) => ({
+        filename: file.filename,
+        path: isProduction ? undefined : file.path, // attachments only for local files
+      })),
+    };
+
+    await transporter.sendMail(userMail);
+    await transporter.sendMail(adminMail);
+
+    console.log("✅ Confirmation mail sent to user and admin.");
+
+    return res.status(201).json({
+      status: 201,
+      message: "Form submitted successfully and emails sent.",
+      files: uploadedFiles,
+    });
+
+  } catch (error) {
+    console.error("❌ Error:", error);
+    return res.status(500).json({ status: 500, error: "Server Error" });
+  }
+});
+
+module.exports = router;
+
 const uploadDir = path.join(__dirname, "../uploads");
 if (!fs.existsSync(uploadDir)) {
   fs.mkdirSync(uploadDir);
