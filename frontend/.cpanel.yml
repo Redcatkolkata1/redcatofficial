@@ -1,0 +1,8 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/redcatdeveloper/public_html/
+    - /bin/rm -rf $DEPLOYPATH/*
+    - /usr/local/bin/npm install --prefix frontend
+    - /usr/local/bin/npm run build --prefix frontend
+    - /bin/cp -R frontend/dist/* $DEPLOYPATH/
