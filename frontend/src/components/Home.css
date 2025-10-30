@@ -12,57 +12,84 @@ body {
   overflow-x: hidden;
   scroll-behavior: smooth;
   font-family: Arial, sans-serif;
-  background-color: #000;
+  background: url("../assets/background/bg9.jpg");
+  padding-top: 0;
 }
 
 /* Fix for navbar scroll target spacing */
 .scroll-section {
-  scroll-margin-top: 80px;
+  scroll-margin-top: 85px;
 }
 
 /* ================= HERO CAROUSEL ================= */
 .home_container {
   width: 100vw;
-  min-height: 100vh;
+  height: 60vh;
   margin: 0;
   padding: 0;
   position: relative;
-  background: #000;
+  background: none;
   overflow: hidden;
+  box-shadow: none !important;
+  z-index: 1;
+  margin-top: 0 !important;
+  padding-top: 0 !important;
 }
 
 .hero-carousel {
   width: 100vw;
-  height: 100vh;
+  height: 60vh;
   position: relative;
   overflow: hidden;
   z-index: 1;
+  margin-bottom: 0 !important;
+  box-shadow: none !important;
 }
 
 .hero-carousel .carousel-inner,
 .hero-carousel .carousel-item,
 .carousel-slide {
   width: 100%;
-  height: 100vh;
+  height: 60vh;
+  box-shadow: none !important;
+  background: none !important;
 }
 
 .carousel-slide {
   position: relative;
   width: 100%;
   height: 100%;
+
 }
 
+.hero-carousel .carousel-item img,
 .carousel-img {
   width: 100%;
   height: 100%;
-  object-fit: fill;
+  object-fit: fill !important;
   display: block;
+  transition: transform 0.8s ease, font-size 0.8s ease;
+  transform: scale(1);
+}
+
+/* ✅ Rounded edges removed, clean edges */
+.hero-carousel,
+.hero-carousel .carousel-inner,
+.hero-carousel .carousel-item,
+.carousel-slide,
+.carousel-img {
+  overflow: hidden !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
 }
 
 /* ✅ Remove ANY overlay or tint completely */
 .carousel-slide::before,
 .carousel-slide::after {
   content: none !important;
+  background: none !important;
+  box-shadow: none !important;
+  opacity: 0 !important;
 }
 
 /* ✅ Ensure carousel captions (if used) are visible */
@@ -73,14 +100,66 @@ body {
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
 }
 
+/* ✅ Fix dotted boxes around carousel indicators */
+.hero-carousel .carousel-indicators {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin: 0;
+  z-index: 10;
+}
+
+
+
+.hero-carousel .carousel-indicators button {
+  width: 35px;
+  height: 4px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: none !important;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  opacity: 1 !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+.hero-carousel .carousel-indicators .active {
+  background-color: #ffffff;
+  width: 45px;
+
+}
+
+.hero-carousel .carousel-indicators button:focus,
+.hero-carousel .carousel-indicators button:active,
+.hero-carousel .carousel-indicators button:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
 /* ================= SECTION BASE ================= */
 .home_section {
   width: 100vw;
-  background-color: #000;
+  background-color: black;
   color: #fff;
   text-align: center;
   margin: 0;
   padding: 60px 0;
+  box-shadow: none;
+}
+
+.shadow,
+.shadow-sm,
+.shadow-lg,
+.carousel,
+.carousel-item,
+.carousel-img {
+  box-shadow: none !important;
 }
 
 .section-inner-content {
@@ -104,6 +183,7 @@ body {
 #contact .section-inner-content {
   text-align: left !important;
   display: block !important;
+  box-shadow: none;
 }
 
 #contact label {
@@ -117,15 +197,18 @@ body {
 /* ================= MISSION / VISION ================= */
 .mission-vision-wrapper {
   width: 100%;
-  background-color: #000;
-  padding: 60px 0;
+  background-color: black;
+  margin-top: -200px !important;
+  padding-top: 0 !important;
+  position: relative;
+  z-index: 10;
 }
 
 .chevron-row {
   display: flex;
   width: 100%;
   min-height: 250px;
-  color: white;
+  color: black;
   padding-left: 40px;
 }
 
@@ -139,17 +222,19 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: red;
   position: relative;
   color: white;
+  transition: all 0.5s ease;
 }
 
 .right-arrow {
   clip-path: polygon(0 0, 90% 0, 100% 50%, 90% 100%, 0 100%);
+  background: linear-gradient(to right, black 0%, #c40000 60%, red 100%);
 }
 
 .left-arrow {
   clip-path: polygon(10% 0, 100% 0, 100% 100%, 10% 100%, 0 50%);
+  background: linear-gradient(to left, black 0%, #c40000 60%, red 100%);
 }
 
 /* Animate scale */
@@ -168,7 +253,7 @@ body {
 
 .chevron-text {
   width: 50%;
-  background-color: black;
+  background-color: rgb(0, 0, 0);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -185,7 +270,7 @@ body {
   align-items: center;
   justify-content: space-between;
   flex-wrap: wrap;
-  background-color: #000;
+  background-color: black;
   color: #fff;
   width: 100%;
   margin: 0;
@@ -200,23 +285,20 @@ body {
   flex: 1;
   min-width: 300px;
   position: relative;
-  clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
-  overflow: hidden;
+  overflow: visible;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 450px;
-}
-
-.angled-image-wrapper.right-clip {
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+  height: auto;
+  max-height: 500px;
 }
 
 .angled-image {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   display: block;
+  box-shadow: none !important;
 }
 
 .angled-text {
@@ -226,7 +308,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background-color: #000;
+  background-color: black;
 }
 
 .angled-text h2 {
@@ -256,7 +338,6 @@ body {
 
 /* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
-  /* === Fix Carousel Height & Remove Gap === */
   .hero-carousel,
   .hero-carousel .carousel-inner,
   .hero-carousel .carousel-item,
@@ -265,10 +346,8 @@ body {
     height: 40vh !important;
     max-height: 40vh !important;
     overflow: hidden;
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-    margin-bottom: 0 !important;
-    padding-bottom: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
   }
 
   .carousel-img {
@@ -285,13 +364,12 @@ body {
     overflow: hidden;
   }
 
-  /* === 🔽 Reduce gap before "Our Mission" (Updated) === */
   .mission-vision-wrapper {
-    margin-top: -35px !important; /* tighter pull-up */
+    margin-top: -300px !important;
     padding-top: 0 !important;
+    z-index: 10;
   }
 
-  /* === Responsive Layout Adjustments === */
   .chevron-row,
   .chevron-row.reverse {
     flex-direction: column;
@@ -305,7 +383,7 @@ body {
     height: auto !important;
     clip-path: none;
     background-color: red;
-    margin: 5px auto 0 auto; /* slightly tighter spacing */
+    margin: 5px auto 0 auto;
     border-radius: 4px;
     display: flex;
     align-items: center;
@@ -331,8 +409,7 @@ body {
     padding: 30px 0;
   }
 
-  .angled-image-wrapper,
-  .angled-image-wrapper.right-clip {
+  .angled-image-wrapper {
     clip-path: none;
     height: 250px;
   }

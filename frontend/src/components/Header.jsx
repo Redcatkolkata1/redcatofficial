@@ -6,6 +6,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import logo from "../assets/logo.png";
 import "./Header.css";
+import Gallery from './Gallery';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -78,10 +79,7 @@ const Header = () => {
             <div className="nav-link-custom" onClick={() => handleNavClick("home", "/")}>Home</div>
             <NavLink to="/about" className="nav-link-custom" onClick={() => setExpanded(false)}>About</NavLink>
             <div className="nav-link-custom" onClick={() => handleNavClick("products", "/products")}>Products</div>
-            <NavDropdown title="Company" id="basic-nav-dropdown" className="nav-dropdown-custom" menuVariant="dark">
-              <NavDropdown.Item as={Link} to="/company/gallery" onClick={() => setExpanded(false)}>Gallery</NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/company/values" onClick={() => setExpanded(false)}>Values</NavDropdown.Item>
-            </NavDropdown>
+            <NavLink to="/gallery" className="nav-link-custom" onClick={() => setExpanded(false)}>Gallery</NavLink>
             <div className="nav-link-custom" onClick={() => handleNavClick("team", "/team")}>Our Team</div>
             <NavLink to="/privacy" className="nav-link-custom" onClick={() => setExpanded(false)}>Privacy Policy</NavLink>
             <div className="nav-link-custom" onClick={() => handleNavClick("contact", "/contact")}>Contact</div>

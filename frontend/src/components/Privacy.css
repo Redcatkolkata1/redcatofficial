@@ -4,9 +4,9 @@
   align-items: flex-start;   
   justify-content: flex-start; /* force left */
   flex-wrap: wrap; 
-  background: url("../assets/background/bg1.jpg"); /* 🔥 Background image */               
+  background: url("../assets/background/bg9.jpg"); /* 🔥 Background image */               
   background-color: black;
-  background-size: contain;
+  background-size: cover;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;

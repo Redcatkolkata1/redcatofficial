@@ -91,10 +91,10 @@ const Home = () => {
           </div>
           <div className="chevron-text">
             <p>
-              We are a software services company using the power of technology
-              to build better futures for our customers, colleagues, environment
-              and communities, thereby delivering cutting edge solutions in
-              Security, IoT, and AI, since April 2021.
+           Be an IT services company using the power of technology to build
+           better futures for our customers, colleagues, environment and
+           communities, helping our customers deliver business impact, and be the
+           employer of choice.
             </p>
           </div>
         </div>
@@ -107,8 +107,9 @@ const Home = () => {
           </div>
           <div className="chevron-text">
             <p>
-              We leverage the power of partnerships through our curated team of
-              leaders and consultants, by combining strengths and expertise.
+             To build a world where technology 
+             uplifts people, strengthens communities, and 
+             enables limitless possibilities for progress.
             </p>
           </div>
         </div>

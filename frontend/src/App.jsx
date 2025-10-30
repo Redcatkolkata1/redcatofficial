@@ -28,8 +28,7 @@ function App() {
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
           <Route path="/products" element={<Products isStandalone={true} />} />
-          <Route path='/company/gallery' element={<Gallery />} />
-          <Route path='/company/values' element={<Values />} />
+          <Route path='/gallery' element={<Gallery />} />
           <Route path="/team" element={<OurTeam isStandalone={true} />} />
           <Route path='/privacy' element={<Privacy />} />
           <Route path="/contact" element={<Contact isStandalone={true} />} />

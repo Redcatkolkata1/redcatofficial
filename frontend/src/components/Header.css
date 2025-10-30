@@ -1,10 +1,15 @@
 /* Navbar base */
 .custom-navbar {
-  background-color: rgba(245, 77, 77, 0.95) !important;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-  padding: 0.35rem 1rem;
-  z-index: 1100;
-  transition: transform 0.4s ease-in-out, background-color 0.5s ease;
+  background: transparent !important; /* Slight transparency for overlay, adjust as needed */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 2000;
+  backdrop-filter: blur(3px); /* Optional for a glass effect */
+  border: none;
+  box-shadow: none;
+  transition: background 0.3s;
 }
 
 /* Hides the navbar when scrolling down */
@@ -14,7 +19,7 @@
 }
 
 .custom-navbar.scrolled {
-  background-color: rgba(245, 77, 77, 0.95) !important;
+  background: none !important;
 }
 
 /* Outer container */
@@ -75,41 +80,6 @@
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
 }
 
-.nav-dropdown-custom>.dropdown-toggle {
-  color: white !important;
-  margin-right: 15px !important;
-  font-size: 16px;
-  font-weight: 700;
-  display: flex;
-  align-items: center;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
-}
-
-/* Dropdown menu */
-.nav-dropdown-custom .dropdown-menu {
-  background: #070707;
-  border: none;
-  border-radius: 6px;
-  margin-top: 0 !important;
-}
-
-.nav-dropdown-custom .dropdown-item {
-  color: white;
-  font-size: 16px;
-  padding: 10px 15px;
-  font-weight: 700;
-}
-
-.nav-dropdown-custom .dropdown-item:hover {
-  background: transparent;
-  color: #ffd700 !important;
-}
-
-.nav-dropdown-custom .dropdown-item.active {
-  background: #ffd700 !important;
-  color: #000 !important;
-}
-
 /* Toggler */
 .navbar-toggler {
   flex-shrink: 0;
@@ -149,7 +119,7 @@
   }
 
   .navbar-collapse-custom {
-    background: #ec5c5c;
+    background: black;
     border-radius: 0 0 8px 8px;
     padding: 12px 18px;
   }
