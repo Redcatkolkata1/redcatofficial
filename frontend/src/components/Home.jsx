@@ -146,7 +146,7 @@ const Home = () => {
           </p>
           <p>
             Sustainability- Discover how Red Cat is revolutionizing the smart phone experience through
-            innovation and by giving Originality with quality to every user
+            innovation and by giving Originality with quality to every user.
           </p>
         </div>
       </section>
