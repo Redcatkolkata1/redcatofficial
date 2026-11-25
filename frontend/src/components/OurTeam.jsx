@@ -88,7 +88,7 @@ const OurTeam = ({ isStandalone = false }) => {
       </section>
 
        {/* Sales Managers Section */}
-        <section className="ourteam_section managers_section">
+        {/* <section className="ourteam_section managers_section">
         <h3 className="section_subtitle">SALES HEAD</h3>
         <div className="team_grid">
           <div className="team_card">
@@ -99,7 +99,7 @@ const OurTeam = ({ isStandalone = false }) => {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
     </div>
   );
